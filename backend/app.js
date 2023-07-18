@@ -94,11 +94,13 @@ mongoose.connect(
       console.error('FAILED TO CONNECT TO MONGODB');
       console.error(err);
     } else {
-      console.log('CONNECTED TO MONGODB');
-      app.listen(80);
+      console.log('CONNECTED TO MONGODB!!!');
+      app.listen(80); 
     }
   }
 );
 
 
-// docker run --name goals-backend --rm -d -p 80:80  --network goals-net goals-node
+// docker run --name goals-backend --rm -d -p 80:80  --network goals-net goals-node 
+
+
