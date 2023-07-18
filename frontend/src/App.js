@@ -113,3 +113,7 @@ function App() {
 }
 
 export default App;
+
+
+//docker run --name goals-frontend --rm -p 3000:3000  goals-react
+// no need to add the front end to the network, because the react code is executing in the browser not in the container

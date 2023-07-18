@@ -84,7 +84,7 @@ app.delete('/goals/:id', async (req, res) => {
 });
 
 mongoose.connect(
-  'mongodb://localhost:27017/course-goals',
+  'mongodb://mongodbgoals:27017/course-goals',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -99,3 +99,6 @@ mongoose.connect(
     }
   }
 );
+
+
+// docker run --name goals-backend --rm -d -p 80:80  --network goals-net goals-node
