@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  mongodbgoals:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+    environment:
+      - MONGODB_USERNAME=nick
+      - MONGODB_PASSWORD=nick
+    #env file
+    # env_file:
+    #   - ./env/mongo.env  
+    # networks:       //by default a network is created by docker compose and all containers to it
+    #   - goals-net
+  backend:
+    build: ./backend
+    ports:
+      - "80:80"
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app    #bind mount don't need to be added below
+      - /app/node_modules #same
+    depends_on:
+      - mongodbgoals
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/app/src  
+    stdin_open: true  #for the -it
+    tty: true         #for the -it
+    depends_on:
+      - backend
+
+volumes:
+  data:
+  logs:  
